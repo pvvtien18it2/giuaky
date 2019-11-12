@@ -9,7 +9,7 @@ class Post extends Model
     protected $table = 'posts';
     protected $fillable = ['title','body','author_id','image','publish'];
 
-    public function newstype()
+    public function newstypes()
     {
         return $this->belongsToMany('App\Newstype', 'categories');
         // return $this->belongsToMany('App\Newstype', 'categories','post_id','newstype_id');

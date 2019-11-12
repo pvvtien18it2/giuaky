@@ -19,7 +19,8 @@ class PostSeed extends Seeder
                 'title'=>$title,
                 'body' =>$faker->text(),
                 'author_id'=> $author_id[array_Rand($author_id, 1)],
-                'publish' =>random_int(0,1)
+                'publish' =>random_int(0,1),
+                'newstype_id'=> random_int(1,4)
             ]);
         }
     }

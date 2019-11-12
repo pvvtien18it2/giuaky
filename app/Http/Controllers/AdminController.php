@@ -45,13 +45,13 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-
-       if(isset($request->fImage)){
+        $post = new Post;
+        if(isset($request->fImage)){
         $img = $request->file('fImage');
         $img_name = $img->getClientOriginalName();
 
 
-        $post = new Post;
+
         $post->title = $request->title;
         $post->body = $request->body;
         $post->author_id = $request->idUser;
@@ -67,22 +67,24 @@ class AdminController extends Controller
 
     }
         else{
-            $post = new Post;
             $post->title = $request->title;
             $post->body = $request->body;
             $post->author_id = $request->idUser;
             $post->publish = 1;
+            $post->newstype_id = $request->type;
             $post->save();
 
         }
 
         $idPost = $request->idPost;
-        $idNews = Newstype::find( $request->type);
+        // $idNews = Newstype::find($request->type)->id;
 
         // $idPost->newstype()->getRelatedIds();
 
-        $idPost->newstype()->attach($idNews);
-        return redirect('/');
+        // $idPost->newstypes()->attach($$request->type);
+
+        $post->newstypes()->attach($request->type);
+        return 'success';
 
     }
 

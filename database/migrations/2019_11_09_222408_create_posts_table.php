@@ -15,9 +15,10 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title');
-            $table->string('body');
+            $table->string('title',100);
+            $table->string('body',3000);
             $table->integer('author_id');
+            $table->unsignedInteger('newstype_id')->references('id')->on('newstypes');
             $table->string('image')->nullable();
             $table->boolean('publish')->default(false);
             $table->timestamps();

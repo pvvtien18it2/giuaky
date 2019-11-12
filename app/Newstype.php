@@ -10,7 +10,7 @@ class Newstype extends Model
     protected $fillable = ['name'];
     public $timestamps = false;
 
-    public function post()
+    public function posts()
     {
         return $this->belongsToMany('App\Post', 'categories');
         // return $this->belongsToMany('App\Post', 'categories','newstype_id','post_id');
